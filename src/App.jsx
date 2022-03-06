@@ -1,13 +1,32 @@
 import React from 'react';
-import Table from './Table';
-import './App.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { actions } from './Store/index';
 
-function App() {
+const App = () => {
+  const counterState = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+  const increase = () => {
+    dispatch(actions.increment());
+  };
+  const decrease = () => {
+    if (counterState > 0) dispatch(actions.decrement());
+  };
+  const adddby10 = () => {
+    dispatch(actions.addBy(20));
+  };
+  const reset = () => {
+    if (counterState !== 0) dispatch(actions.reset());
+  };
   return (
-    <>
-      <Table />
-    </>
+    <div>
+      <h1> Counter </h1>
+      <h2> {counterState} </h2>
+      <button onClick={increase}>INC</button>
+      <button onClick={decrease}>DEC</button>
+      <button onClick={adddby10}>ADD BY 10</button>
+      <button onClick={reset}>RESET</button>
+    </div>
   );
-}
+};
 
 export default App;
