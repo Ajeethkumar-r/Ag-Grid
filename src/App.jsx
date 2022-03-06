@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions } from './Store/index';
+import Table from './Table';
 
 const App = () => {
   const counterState = useSelector((state) => state.counter);
@@ -19,6 +20,7 @@ const App = () => {
   };
   return (
     <div>
+      {/* <Table /> */}
       <h1> Counter </h1>
       <h2> {counterState} </h2>
       <button onClick={increase}>INC</button>
